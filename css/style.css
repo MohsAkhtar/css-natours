@@ -54,10 +54,14 @@ body {
   just the position of the element itself. Good for repositioning
   elements. */
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 .heading-primary-main {
   display: block;
@@ -75,9 +79,8 @@ body {
   font-weight: 700;
   letter-spacing: 17.4px;
 
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
+  /* Short hand version of above */
+  animation: moveInRight 1s ease-out;
 }
 
 /* Animation */
@@ -111,4 +114,34 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/*---Buttons---*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s; /* transition on all properties */
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*This is in relation to link not hover */
+.btn:active {
+  transform: translateY(
+    -1px /* This gives nice effect of pussing button 
+    down when clicked */
+  );
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Shadow is reduced when clicked */
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
 }
