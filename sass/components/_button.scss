@@ -1,0 +1,63 @@
+/*---Buttons---*/
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s; /* transition on all properties */
+    position: relative;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; /* trick for fading something out */
+    }
+  }
+
+  /*active is in relation to link not hover */
+  &:active {
+    transform: translateY(
+      -1px /* This gives nice effect of pussing button 
+          down when clicked */
+    );
+    box-shadow: 0 5px 10px rgba($color-black, 0.2); /* Shadow is reduced when clicked */
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /* add element that looks exactly like btn we have
+    but we put it behind the button. When we hover out
+    of the element the btn basically returns behind the
+    element.*/
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}
