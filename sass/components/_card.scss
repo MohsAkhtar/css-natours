@@ -106,6 +106,9 @@
     // to treat them as two diff elements, thus applying equal padding on each side
     -webkit-box-decoration-break: clone; // 'clone' treats the things as two different entities
     box-decoration-break: clone;
+    // clipping effect border radius so have to have it again here
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     &--1 {
       background-image: linear-gradient(
         to right bottom,
