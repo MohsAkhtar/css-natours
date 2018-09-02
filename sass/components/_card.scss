@@ -4,10 +4,10 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 50rem; // so it does not collapse because cards are absolute
+  height: 52rem; // so it does not collapse because cards are absolute
 
   &__side {
-    height: 50rem;
+    height: 52rem;
     transition: all 0.7s ease;
     position: absolute; // to get the cards on top of each other
     top: 0;
@@ -73,10 +73,20 @@
         url(../img/nat-5.jpg);
     }
     &--2 {
-      background-image: url(../img/nat-5.jpg);
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
     }
     &--3 {
-      background-image: url(../img/nat-5.jpg);
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
     }
   }
   &__heading {
@@ -94,7 +104,7 @@
     padding: 1rem 1.5rem;
     // for the text going on different lines we can use 'box-decoration-break'
     // to treat them as two diff elements, thus applying equal padding on each side
-    -webkit-box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; // 'clone' treats the things as two different entities
     box-decoration-break: clone;
     &--1 {
       background-image: linear-gradient(
@@ -103,5 +113,59 @@
         rgba($color-secondary-dark, 0.85)
       );
     }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+  &__details {
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; // centres all list items
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+  // BACK SIDE STYLING
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // width 90% to fix issue with button text wrapping
+    width: 90%;
+    text-align: center;
+    // get button in centre
+  }
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
   }
 }
