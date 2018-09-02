@@ -14,4 +14,11 @@
     ),
     url('../img/hero.jpg');
   background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10.5rem; // closes gap between sections to get rid of white space
+
+  // '> *' gets all direct children
+  & > * {
+    transform: skewY(7deg); // stops info cards skewing
+  }
 }
