@@ -49,4 +49,20 @@ body {
   );
   -webkit-background-clip: text; // clips background to exactly where the text is
   color: transparent; // so we can see clipped background gradient
+  letter-spacing: 2px; // px so small we don't really need to use rem here
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1); // effect of text skewing when hovered on
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+  }
+}
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.paragraph {
+  font-size: $default-font-size;
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }

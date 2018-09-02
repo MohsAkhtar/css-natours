@@ -2,7 +2,6 @@
   // row won't go over this, ut if we got less than this size
   // then will fill 100% of the available space that it has
   max-width: $grid-width; // standard is 1140px but we want rem so we divide by 10
-  background-color: #eee;
   margin: 0 auto;
 
   // do to everything but not last row (:last-child)
@@ -14,7 +13,6 @@
 
   // attribute selector (^ means starts with
   [class^='col'] {
-    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
