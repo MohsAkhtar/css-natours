@@ -2,13 +2,13 @@
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
-  background-color: $color-white;
+  // added transparent effect to see video behind card
+  background-color: rgba($color-white, 0.5);
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
   font-size: $default-font-size;
   transform: skewX(-12deg);
-
   // picture of person, circle
   &__shape {
     width: 15rem;
@@ -27,7 +27,6 @@
     transform: translateX(-3rem) skewX(12deg);
     position: relative; // for positioning of caption
   }
-
   &__img {
     // because inside shape with defined width we can use 100%
     // but in this case width is bigger than height so we use height: 100%;
@@ -36,11 +35,9 @@
     transform: translateX(-4rem) scale(1.4); // translateX to centre image in circle
     transition: all 0.5s;
   }
-
   &__text {
     transform: skewX(12deg);
   }
-
   &__caption {
     position: absolute;
     top: 50%;
@@ -53,19 +50,17 @@
     text-transform: uppercase;
     opacity: 0;
     transition: all 0.5s;
-    backface-visibility: hidden; // removes glitch of the animation shaking to right/left at end
+    backface-visibility: hidden;
+    // removes glitch of the animation shaking to right/left at end
   }
-
   // move figure caption when card is hovered on
   &:hover &__caption {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
-
   &:hover &__img {
     transform: translateX(-4rem) scale(1);
-    // add filter to image, brightnesss > 100% brighter
-    // brightness < 100% dimmer
+    // add filter to image, brightnesss > 100% brighter // brightness < 100% dimmer
     filter: blur(3px) brightness(80%);
   }
 }
