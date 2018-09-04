@@ -18,6 +18,7 @@
     width: 90%;
     // to get label to appear below input
     display: block;
+    transition: all 0.3s;
 
     &:focus {
       outline: none; // gets rid of blue outline on input
@@ -38,6 +39,24 @@
     }
   }
 
+  // label is hidden till user types
   &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem; // to get it aligned with input text above
+    margin-top: 0.7rem;
+    display: block; // so we can use box model properties on this element
+    transition: all 0.3s;
+  }
+
+  // when we can see placeholder text of input
+  &__input:placeholder-shown + &__label {
+    // as label is a sibling not a child we have to use 'sibling selector'
+    // in this case we use '+' adjacent sibling selector
+    // sibling always has to come after in HTML
+    opacity: 0;
+    visibility: hidden; // so element does not appear on page when not needed
+    // we do opacity here so we can also animate
+    transform: translateY(-4rem);
   }
 }
