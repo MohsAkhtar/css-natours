@@ -1,5 +1,8 @@
 /*---Buttons---*/
 .btn {
+  // this '&' adds style to <button> element too
+  // as 'link' and 'visited' are for <a> elements
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -10,6 +13,10 @@
     transition: all 0.2s; /* transition on all properties */
     position: relative;
     font-size: $default-font-size;
+
+    // Change for <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -23,7 +30,10 @@
   }
 
   /*active is in relation to link not hover */
-  &:active {
+  &:active,
+  &:focus {
+    // To get of outline on <button> we set 'focus' same as 'active'
+    outline: none;
     transform: translateY(
       -1px /* This gives nice effect of pussing button 
           down when clicked */
