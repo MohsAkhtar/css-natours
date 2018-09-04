@@ -13,6 +13,7 @@
     right: 6rem;
     border-radius: 50%;
     z-index: 2000; // needs to be on top of background
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
   }
 
   &__background {
@@ -27,17 +28,21 @@
       $color-primary-light,
       $color-primary-dark
     );
-    z-index: 1000; // so it stays on top all the time
-    transform: scale(80);
+    z-index: 1000; // so it stays on top all the time but behind menu and links
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   }
   // we want this to cover entire screen
   &__nav {
     height: 100vh;
-    width: 100%;
     position: fixed; // so even if we scroll navigation stays where it is
     top: 0;
     right: 0; // doesnt matter if left or right as it covers entire width anyway
     z-index: 1500; // needs to be in between background and menu
+    // opacity 0 so nav links do not appear on page till menu is clicked
+    opacity: 0;
+    // width 0 because links still can be clicked even though you cannot see them
+    width: 0;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   &__list {
     // centre linkis in middle
@@ -47,6 +52,7 @@
     transform: translate(-50%, -50%);
     list-style: none;
     text-align: center;
+    width: 100%; // stops weird transition where menu items go right and then top when dissapearing
   }
   &__item {
     margin: 1rem;
@@ -79,5 +85,16 @@
       color: $color-primary;
       transform: translateX(2rem);
     }
+  }
+  // ---WHEN MENU IS CLICKED---
+  // same as radio button hack in booking section
+  // using sibling selector here
+  &__checkbox:checked ~ &__background {
+    transform: scale(80); // background covers screen
+  }
+  // Links become visible
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
   }
 }
