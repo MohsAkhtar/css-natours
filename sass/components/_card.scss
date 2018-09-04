@@ -14,7 +14,7 @@
     left: 0;
     width: 100%; // so the card isnt just length of text
     backface-visibility: hidden; // hides back
-    border-radius: 3px;
+    border-radius: $border-radius;
     overflow: hidden; // to stop background images overflowing parent, keeps border radius working
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
