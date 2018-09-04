@@ -7,7 +7,7 @@
     border-radius: 2px;
     position: absolute;
     z-index: 10; // this changes on hover the picture goes on top of the others
-    transition: all 0.4s;
+    transition: all 0.3s;
     outline-offset: 2rem; // adds space between offset and image
 
     &--p1 {
@@ -36,5 +36,6 @@
   // selects photo in composition that is not hovered
   &:hover &__photo:not(:hover) {
     transform: scale(0.95); // non-hovered pictures get smaller
+    opacity: 0.4;
   }
 }
