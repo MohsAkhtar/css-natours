@@ -7,7 +7,7 @@
     border-radius: 2px;
     position: absolute;
     z-index: 10; // this changes on hover the picture goes on top of the others
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
     outline-offset: 2rem; // adds space between offset and image
 
     &--p1 {
