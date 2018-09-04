@@ -1,0 +1,83 @@
+.navigation {
+  // we are using the checkbox hack for this menu
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem; // because background is 6.5rem, need to account for the extra 1rem
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000; // needs to be on top of background
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    // radial gradient goes from the inside to out
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+    z-index: 1000; // so it stays on top all the time
+    transform: scale(80);
+  }
+  // we want this to cover entire screen
+  &__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed; // so even if we scroll navigation stays where it is
+    top: 0;
+    right: 0; // doesnt matter if left or right as it covers entire width anyway
+    z-index: 1500; // needs to be in between background and menu
+  }
+  &__list {
+    // centre linkis in middle
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  &__item {
+    margin: 1rem;
+  }
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block; // remember display so padding etc. gets applied
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem; // less padding on top then sides is always better look
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      // background size here will move the
+      // background to the right out of sight
+      // until hovered on
+      background-size: 230%;
+      transition: all 0.4s;
+    }
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(2rem);
+    }
+  }
+}
