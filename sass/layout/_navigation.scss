@@ -14,6 +14,8 @@
     border-radius: 50%;
     z-index: 2000; // needs to be on top of background
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+    text-align: center; // to centre menu icon
+    cursor: pointer;
   }
 
   &__background {
@@ -96,5 +98,55 @@
   &__checkbox:checked ~ &__nav {
     opacity: 1;
     width: 100%;
+  }
+  // MENU ICON
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      display: inline-block;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+    }
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+    // positioning of top and bottom menu icon bits
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+  // animation for when button is hovered on
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+  // when button is clicked (checkbox checked) animation
+  &__checkbox:checked + &__button &__icon {
+    // middle bit becomes transparent
+    background-color: transparent;
+  }
+  // to make cross we need to move other bits back to middle so 'top: 0'
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(
+      135deg
+    ); // 135deg instead of 45 wo make the animation look better, same effect but more rotation
+  }
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 }
