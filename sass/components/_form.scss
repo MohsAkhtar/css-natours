@@ -5,19 +5,37 @@
 
   &__input {
     font-size: 1.5rem;
-    // by default everything inherits fonts apart from inputs
+    // by default everything inherits font properties apart from inputs
     font-family: inherit; // inherit font family from parent
-    padding: 1.5rem 2rem; // better to give more padding on sides looks better
+    color: inherit;
+    padding: 1.5rem 2rem; // better to give inputs more padding on sides looks better
     border-radius: 2px;
     background-color: rgba($color-white, 0.5);
     border: none;
-  }
+    // border on focus has 3px, we need to add transparent here to
+    // stop the second input box moving on focus
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    // to get label to appear below input
+    display: block;
 
-  &__input:focus {
-    outline: none; // gets rid of blue outline on input
-    // for accessibility we need to have some sort of outline for focused inputs
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
-    border-bottom: 3px solid $color-primary;
+    &:focus {
+      outline: none; // gets rid of blue outline on input
+      // for accessibility we need to have some sort of outline for focused inputs
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+
+      // if input is invalid the border colur is different
+      &:invalid {
+        border-bottom: 3px solid $color-secondary-dark;
+      }
+    }
+
+    // this only works on safari and chrome
+    &::-webkit-input-placeholder {
+      // changes colour of input placeholder text
+      color: $color-grey-dark-2;
+    }
   }
 
   &__label {
