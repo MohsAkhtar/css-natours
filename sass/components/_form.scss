@@ -59,4 +59,56 @@
     // we do opacity here so we can also animate
     transform: translateY(-4rem);
   }
+
+  // Get rid of default radio input displayed so we can style our own
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-group {
+    width: 49%; // 49 as they don't appear side by side at 50
+    display: inline-block;
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem; // to put text where we want it
+  }
+
+  // editting the spans which are replacing the default buttons
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block; // need this so they don't appear on diff lines of label
+    position: absolute;
+    left: 0;
+    top: -0.4;
+
+    // this is to position an inner circle in the outer one for the button which is clicked
+    &::after {
+      // always need 'content' and 'display' for ::after
+      content: '';
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute; // notice parent is 'absolute', this is fine as long as position type is specified
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0; // doesn't appear until button is clicked
+      transition: opacity 0.2s;
+    }
+  }
+
+  //when an input is clicked inner circle appears
+  // selecting adjacent siblings child here (.X + .Y .Z::after)
+  &__radio-input:checked + &__radio-label &__radio-button::after {
+    opacity: 1;
+  }
 }
