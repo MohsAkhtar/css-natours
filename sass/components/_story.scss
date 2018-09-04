@@ -25,15 +25,47 @@
     // best way to move around an element that is floated is not to mess
     // around with margins etc. Better to use transform: translate();
     transform: translateX(-3rem) skewX(12deg);
+    position: relative; // for positioning of caption
   }
 
   &__img {
     // because inside shape with defined width we can use 100%
     // but in this case width is bigger than height so we use height: 100%;
     height: 100%;
+    // scale 1.4 so when hovered on pic gives zoomout effect
+    transform: translateX(-4rem) scale(1.4); // translateX to centre image in circle
+    transition: all 0.5s;
   }
 
   &__text {
     transform: skewX(12deg);
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // move element where it is now and not in relation to parent
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    font-size: 1.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden; // removes glitch of the animation shaking to right/left at end
+  }
+
+  // move figure caption when card is hovered on
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    // add filter to image, brightnesss > 100% brighter
+    // brightness < 100% dimmer
+    filter: blur(3px) brightness(80%);
   }
 }
