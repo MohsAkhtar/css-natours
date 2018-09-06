@@ -1,3 +1,22 @@
+/*
+0-600px : Phone
+600 - 900px: Tablet portrait
+900-1200px: Tablet landscape
+[1200 - 1800] is where out normal styles apply
+1800px + : Big desktop
+
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+rem does not work in some browsers
+*/
 *,
 *::after,
 *::before {
@@ -7,6 +26,15 @@
 
 html {
   font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box; }
@@ -54,7 +82,7 @@ body {
   margin-bottom: 60px; }
   .heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
     letter-spacing: 35px;
     animation-name: moveInLeft;
@@ -62,7 +90,7 @@ body {
     animation-timing-function: ease-out; }
   .heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 17.4px;
     /* Short hand version, animation: 'animation-name' 'animation-duration' 'animation-timing-function' */

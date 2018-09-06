@@ -35,7 +35,7 @@
     // To get of outline on <button> we set 'focus' same as 'active'
     outline: none;
     transform: translateY(
-      -1px /* This gives nice effect of pussing button 
+      -1px /* This gives nice effect of pusing button 
           down when clicked */
     );
     box-shadow: 0 5px 10px rgba($color-black, 0.2); /* Shadow is reduced when clicked */

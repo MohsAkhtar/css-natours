@@ -7,8 +7,28 @@
 }
 
 html {
-  // defines what 1rem is
+  // font-size here defines what 1rem is
+  // 1rem = 10px; 10px/16px = 62.5%
   font-size: 62.5%;
+
+  // landscape first to stop conflicting between this and portrait
+  // order matters as width of portrait is less than landscape
+  // so we don't want landscapes properties applied for example at 700px
+  @include respond(tab-land) {
+    // width < 900?
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+
+  // as min-width stretches to tab-port it includes phone and we want to have same
+  // font-size for both so just need one media query not two
+  @include respond(tab-port) {
+    // width < 600?
+    font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12, 12/16 = 75%
+  }
 }
 
 body {
