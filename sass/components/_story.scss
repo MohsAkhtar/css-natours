@@ -9,6 +9,19 @@
   padding-left: 9rem;
   font-size: $default-font-size;
   transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    // squares take up entire width and removed padding for tablets/mobiles
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    // getting rid of skewing for mobile devices
+    transform: skewX(0);
+  }
+
   // picture of person, circle
   &__shape {
     width: 15rem;
@@ -26,6 +39,11 @@
     // around with margins etc. Better to use transform: translate();
     transform: translateX(-3rem) skewX(12deg);
     position: relative; // for positioning of caption
+
+    @include respond(phone) {
+      // getting rid of skewing for mobile devices
+      transform: translateX(-3rem) skewX(0);
+    }
   }
   &__img {
     // because inside shape with defined width we can use 100%
@@ -37,6 +55,10 @@
   }
   &__text {
     transform: skewX(12deg);
+    @include respond(phone) {
+      // getting rid of skewing for mobile devices
+      transform: skewX(0);
+    }
   }
   &__caption {
     position: absolute;

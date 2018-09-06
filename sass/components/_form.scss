@@ -20,6 +20,10 @@
     display: block;
     transition: all 0.3s;
 
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
     &:focus {
       outline: none; // gets rid of blue outline on input
       // for accessibility we need to have some sort of outline for focused inputs
@@ -68,6 +72,11 @@
   &__radio-group {
     width: 49%; // 49 as they don't appear side by side at 50
     display: inline-block;
+    @include respond(tab-port) {
+      // radio buttons appear as one row each for tablets/mobiles
+      width: 100%;
+      margin-bottom: 2rem;
+    }
   }
 
   &__radio-label {

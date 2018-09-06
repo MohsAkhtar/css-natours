@@ -1,10 +1,8 @@
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7;
   color: $color-grey-dark;
-  padding: 30px;
 }
 
 .heading-primary {
@@ -12,27 +10,36 @@ body {
   text-transform: uppercase;
 
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 
   &--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
   }
 
   &--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.74rem;
 
     /* Short hand version, animation: 'animation-name' 'animation-duration' 'animation-timing-function' */
     animation: moveInRight 1s ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+    }
   }
 }
 
@@ -50,8 +57,16 @@ body {
   -webkit-background-clip: text; // clips background to exactly where the text is
   color: transparent; // so we can see clipped background gradient
   letter-spacing: 2px; // px so small we don't really need to use rem here
+  // RESPONSIVENESS
+  @include respond(tab-port) {
+    font-size: 2.5rem;
+  }
+  @include respond(phone) {
+    font-size: 2rem;
+  }
   &:hover {
-    transform: skewY(2deg) skewX(15deg) scale(1.1); // effect of text skewing when hovered on
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    // effect of text skewing when hovered on
     text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
   }
 }
@@ -63,6 +78,6 @@ body {
 .paragraph {
   font-size: $default-font-size;
   &:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
   }
 }

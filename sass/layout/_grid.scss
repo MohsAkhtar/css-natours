@@ -4,9 +4,21 @@
   max-width: $grid-width; // standard is 1140px but we want rem so we divide by 10
   margin: 0 auto;
 
+  // change max-width of row for smaller devices
+  @include respond(tab-port) {
+    max-width: 50rem;
+    // want padding on sides for columns on mobile devices
+    // as they are occupying one row now each
+    padding: 0 3rem;
+  }
+
   // do to everything but not last row (:last-child)
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+    // gutter-vertical is smaller for smaller devices, >900
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
   }
 
   @include clearfix; // stops element collapsing when row children are all floats
@@ -17,6 +29,19 @@
 
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      // don't need margin-right on mobile/tablets as the columns are no longer
+      // side by side
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small; // need this to add space between columns that have become subrows
+      }
+    }
+
+    // setting columns to 100% for mobiles as this is the best way to do it
+    // they take up the entire screen width
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 

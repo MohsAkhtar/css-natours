@@ -4,10 +4,17 @@
   font-size: 1.4rem;
   color: $color-grey-light-1;
 
+  @include respond(tab-port) {
+    padding: 8rem 0;
+  }
+
   &__logo-box {
     //inline element behaves just like text so we can use text-align
     text-align: center;
     margin-bottom: 8rem;
+    @include respond(tab-port) {
+      margin-bottom: 6rem;
+    }
   }
 
   &__logo {
@@ -20,6 +27,12 @@
     padding-top: 2rem;
     // to fix margin above links
     display: inline-block; // means only takes up space of what it needs
+    // setting to occupy entire width for mobile devices
+    // so column top of each other
+    @include respond(tab-port) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__list {
@@ -61,5 +74,9 @@
     width: 80%;
     // floating right so it looks more symmetrical
     float: right;
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+    }
   }
 }
