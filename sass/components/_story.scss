@@ -27,27 +27,34 @@
     width: 15rem;
     height: 15rem;
     float: left;
-    // this is to shape the text into a cirle on the laft
-    // this only works if the element is floated, has defined
-    // height and width
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%); // circle('radius' at 'posX' 'posY');
-    // now shape the shape into a circle
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
+
     // best way to move around an element that is floated is not to mess
     // around with margins etc. Better to use transform: translate();
     transform: translateX(-3rem) skewX(12deg);
     position: relative; // for positioning of caption
+    overflow: hidden;
+    border-radius: 50%;
 
+    @supports (clip-path(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      // now shape the shape into a circle
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      // this is to shape the text into a cirle on the laft
+      // this only works if the element is floated, has defined
+      // height and width
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(
+        50% at 50% 50%
+      ); // circle('radius' at 'posX' 'posY');
+      border-radius: none;
+    }
     @include respond(phone) {
       // getting rid of skewing for mobile devices
       transform: translateX(-3rem) skewX(0);
     }
   }
   &__img {
-    // because inside shape with defined width we can use 100%
-    // but in this case width is bigger than height so we use height: 100%;
+    // because inside shape with defined width we can use 100% // but in this case width is bigger than height so we use height: 100%;
     height: 100%;
     // scale 1.4 so when hovered on pic gives zoomout effect
     transform: translateX(-4rem) scale(1.4); // translateX to centre image in circle
@@ -81,8 +88,7 @@
     transform: translate(-50%, -50%);
   }
   &:hover &__img {
-    transform: translateX(-4rem) scale(1);
-    // add filter to image, brightnesss > 100% brighter // brightness < 100% dimmer
+    transform: translateX(-4rem) scale(1); // add filter to image, brightnesss > 100% brighter // brightness < 100% dimmer
     filter: blur(3px) brightness(80%);
   }
 }

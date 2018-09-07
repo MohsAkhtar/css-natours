@@ -11,6 +11,16 @@
   opacity: 0; // opacity 0 so it won't appear on screen
   visibility: hidden; // visibility hidden so even when opacity is gone the links and elements are not accessible
   transition: all 0.3s;
+ 
+  // backdrop filter applies filter to background of element
+  //currently only works in safari
+  // supports checks if browser can do the thing then it applies what is in {}
+  // this is graceful degradation
+  @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)){
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
 
   &__content {
     @include absoluteCenter;

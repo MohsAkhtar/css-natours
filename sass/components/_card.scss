@@ -13,6 +13,7 @@
     top: 0;
     left: 0;
     width: 100%; // so the card isnt just length of text
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden; // hides back
     border-radius: $border-radius;
     overflow: hidden; // to stop background images overflowing parent, keeps border radius working
