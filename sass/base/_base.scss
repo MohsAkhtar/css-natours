@@ -38,3 +38,9 @@ body {
     padding: 0;
   }
 }
+
+// changes effect of when we select text on page
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}

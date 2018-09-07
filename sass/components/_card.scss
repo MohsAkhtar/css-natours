@@ -173,7 +173,10 @@
     font-weight: 100;
   }
   // ---------------------------MEDIA QUERY---------------------------------
-  @include respond(tab-port) {
+  // @include respond(tab-port)
+  // 'hover: none' checks if the user is using a device without hover
+  // for example a touch screen
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     // FUNCTIONALITY
     // no longer need perspective and position for mobile
     // getting rid of rotate effect on mobile
@@ -186,7 +189,8 @@
       position: relative;
       box-shadow: none;
       &--back {
-        transform: rotateY(0); // adding clip path
+        transform: rotateY(0);
+        // adding clip path
         clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
       }
     }
