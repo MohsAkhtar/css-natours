@@ -14,7 +14,12 @@
 
   // does not matter values for check in clip-path as we are just checking
   // for support
-  @support(clip-path(0 0) or (-webkit-clip-path: polygon(0 0))){
+  @supports (
+    clip-path: polygon(0 0) or
+      (
+        -webkit-clip-path: polygon(0 0)
+      )
+  ) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     height: 95vh;
@@ -26,9 +31,9 @@
   // 37.5em/600px because it does not make sense to have high res below this
   // ',' means or
   // for extremely large screens (125em/2000px) makes sense to have high res image
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), 
-  (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
-  (min-width: 125em) {
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+    (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    (min-width: 125em) {
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
